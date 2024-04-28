@@ -23,9 +23,9 @@ def detect_labels(path):
     response = client.label_detection(image=image)
     labels = response.label_annotations
     print("Labels:")
-
+        
     for label in labels:
-        print(label.description)
+        print(label.description, label.score)
 
     if response.error.message:
         raise Exception(
@@ -49,7 +49,7 @@ def detect_logos(path):
     print("Logos:")
 
     for logo in logos:
-        print(logo.description)
+        print(logo.description, logo.scrore)
 
     if response.error.message:
         raise Exception(
@@ -109,11 +109,22 @@ def localize_objects(path):
             print(f" - ({vertex.x}, {vertex.y})")
 
 
+# python/Images-Test/IMG_3169.JPG
+print(detect_labels("python/Images-Test/IMG_3174.JPG"))
+print(detect_logos("python/Images-Test/IMG_3179.JPG"))
+print(detect_logos("python/Images-Test/IMG_3190"))
+"""
+print(detect_labels("python/Images-Test/IMG_3176.JPG"))
+print(detect_labels("python/Images-Test/IMG_3180.JPG"))
+print(detect_labels("python/Images-Test/IMG_3186.JPG"))
+"""
 
+"""
 print(detect_labels("python/images/1.jpg"))
 print(detect_logos('python/images/1.jpg'))
 print(detect_properties('python/images/1.jpg'))
 print(localize_objects("python/images/1.jpg"))
+"""
 
 """
 print("===================")
